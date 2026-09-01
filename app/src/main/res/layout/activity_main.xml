@@ -69,4 +69,15 @@
         app:layout_constraintTop_toBottomOf="@+id/changeButton"
         app:layout_constraintVertical_bias="0.072" />
 
+    <Button
+        android:id="@+id/imagebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="imagechange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/text_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

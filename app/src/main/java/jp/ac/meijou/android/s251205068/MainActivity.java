@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -37,6 +38,15 @@ public class MainActivity extends AppCompatActivity {
         //TextView textView = findViewById(R.id.text_view);
         //textView.setText(R.string.text);
         prefDataStore = PrefDataStore.getInstance(this);
+        prefDataStore.getString("name")
+                        .ifPresent(text ->{
+                            var modText= "white" + text;
+                            Log.d("meijo",modText);
+                            binding.textView.setText(modText);
+                            if("change".equals(text)){
+                                binding.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+                            }
+                        });
         binding.changeButton.setOnClickListener(Viewview ->{
             String text =binding.editTextText.getText().toString();
             binding.textView.setText(text);
@@ -45,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         binding.saveButton.setOnClickListener(view -> {
             var text = binding.editTextText.getText().toString();
             prefDataStore.setString("name", text);
+        });
+        binding.imagebutton.setOnClickListener(view ->{
+            binding.imageView.setImageResource(R.drawable.ic_myandroid);
         });
 
         binding.editTextText.addTextChangedListener(new TextWatcher() {
