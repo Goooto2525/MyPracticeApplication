@@ -1,6 +1,10 @@
 package jp.ac.meijou.android.s251205068;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -13,6 +17,7 @@ import jp.ac.meijou.android.s251205068.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+    private PrefDataStore prefDataStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +36,33 @@ public class MainActivity extends AppCompatActivity {
 
         //TextView textView = findViewById(R.id.text_view);
         //textView.setText(R.string.text);
-        binding.textView.setText(R.string.text);
-        binding.imageView.setImageResource(R.drawable.outline_alarm_24);
+        prefDataStore = PrefDataStore.getInstance(this);
+        binding.changeButton.setOnClickListener(Viewview ->{
+            String text =binding.editTextText.getText().toString();
+            binding.textView.setText(text);
+        });
 
+        binding.saveButton.setOnClickListener(view -> {
+            var text = binding.editTextText.getText().toString();
+            prefDataStore.setString("name", text);
+        });
+
+        binding.editTextText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String text = editable.toString();
+                binding.textView.setText(text);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+        });
     }
 }
