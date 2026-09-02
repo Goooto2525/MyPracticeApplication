@@ -12,7 +12,7 @@
         android:id="@+id/button_a"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button A"
+        android:text="明示的インテント"
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_b"
@@ -21,11 +21,29 @@
         android:id="@+id/button_b"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button B"
+        android:text="暗黙的インテント"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/button_a"/>
+    <Button
+        android:id="@+id/intent_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="送信"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/intent_editText"
+        app:layout_constraintStart_toEndOf="@id/intent_editText"/>
+    <EditText
+        android:id="@+id/intent_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="編集できますよ"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_gone"
+        app:layout_constraintEnd_toStartOf="@id/intent_button"/>
+
 
     <TextView
         android:id="@+id/textView_visible"
